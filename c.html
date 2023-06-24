@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Left Panel Navigation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    /* Style for side menu */
+    .container {
+      height: 100%;
+      width: 250px;
+      position: fixed; /* Change position to fixed */
+      background: #161616;
+      z-index: 1;
+      transition: 0.5s ease;
+    }
+
+    .container .head {
+      margin-top: 5px;
+      color: #fbfdce;
+      font-size: 30px;
+      font-weight: bold;
+      padding: 10px;
+      text-transform: uppercase;
+      text-align: center;
+      letter-spacing: 3px;
+      background: linear-gradient(30deg, #df0155, #ed4901);
+      border-radius: 5px;
+    }
+
+    ol {
+      width: 100%;
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ol li {
+      display: block;
+    }
+
+    ol li a {
+      color: #fbfdce;
+      padding: 10px;
+      text-decoration: none;
+      display: block;
+      font-size: 20px;
+      letter-spacing: 1px;
+      position: relative;
+      transition: 0.3s;
+      overflow: hidden;
+      text-transform: capitalize;
+    }
+
+    ol li a i {
+      width: 30px;
+      font-size: 18px;
+      text-align: center;
+      margin-right: 10px;
+    }
+
+    ol li:hover a {
+      background: #030303;
+      color: #00eaff;
+      letter-spacing: 2px;
+      text-decoration: none;
+    }
+
+    /* Hero Section Styles */
+    #hero {
+      background-image: url('https://www.push10.com/wp-content/uploads/geneva-gloval-website-hero-design.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      filter: brightness(70%);
+    }
+
+    #hero h1 {
+      font-size: 40px;
+      margin-bottom: 20px;
+      color: #f4eeee;
+      filter: brightness(100%) !important;
+    }
+
+    #hero p {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: #d3caca;
+      filter: brightness(100%) !important;
+    }
+
+    #hero .btn {
+      padding: 10px 20px;
+      background-color: #333;
+      color: #fff;
+      text-decoration: none;
+      filter: brightness(100%) !important;
+    }
+
+    /* Style for contact section */
+      .contact-section {
+        padding: 20px;
+        background-image: url('https://img.freepik.com/free-photo/top-view-blue-monday-concept-composition-with-telephone_23-2149139103.jpg');
+        height: 100vh;
+        background-size: cover;
+      }
+
+      .contact-section h1 {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      .contact-section form {
+        margin-top: 20px;
+      }
+
+      .contact-section .form-group {
+        margin-bottom: 20px;
+      }
+
+      .contact-section label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      .contact-section input,
+      .contact-section textarea {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+
+      .contact-section textarea {
+        height: 150px;
+      }
+
+      .contact-section button[type="submit"] {
+        padding: 10px 20px;
+        background-color: #337ab7;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+
+      /* Style for information section */
+      #information{
+        background-image: url('https://img.freepik.com/free-vector/worldwide-connection-blue-background-illustration-vector_53876-61764.jpg');
+        background-size: cover;
+      }
+      .information-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+      .info-content {
+        text-align: center;
+        color: white;
+      }
+
+
+      /* Style for guide section */
+      #guide{
+        background-image: url('https://img.freepik.com/premium-photo/educational-concept-books-blue_387680-275.jpg');
+        background-size: cover;
+      }
+      .guide-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      .guide-content {
+        text-align: center;
+      }
+
+      .guide-content h1 {
+        font-size: 30px;
+        margin-bottom: 20px;
+      }
+
+      .guide-content p {
+        font-size: 18px;
+      }
+
+
+      
+      /* Style for content area */
+      .content {
+        /* padding: 20px; */
+        margin-left: 250px;
+      }
+
+      .content > div {
+        display: none;
+      }
+
+    /* Style for active link */
+    .active {
+      color: #ff3c00;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      body{
+        margin-top: -5px;
+      }
+      .container {
+        width: 100%;
+        position: static;
+      }
+
+      .content {
+        margin-top: -20px !important;
+        margin-left: 0;
+        margin-top: 130px; /* Adjust the top margin based on your needs */
+      }
+
+      .content > div {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="head">Menu</div>
+    <ol>
+      <li><a href="#home" class="active"><i class="fas fa-home"></i>Home</a></li>
+      <li><a href="#contact"><i class="fas fa-address-book"></i>Contact</a></li>
+      <li><a href="#information"><i class="fas fa-info"></i>Information</a></li>
+      <li><a href="#guide"><i class="fas fa-compass"></i>Guide</a></li>
+    </ol>
+  </div>
+  <div class="content">
+    <div id="home">
+      <!-- Hero Section -->
+      <section id="hero">
+        <div class="hero-content">
+          <h1>Welcome to My Awesome Website</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <a href="#" class="btn">Learn More</a>
+        </div>
+      </section>
+    </div>
+    <div id="contact">
+      <!-- Contact Section -->
+      <div class="contact-section">
+        <h1>Contact</h1>
+        <form>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" class="form-control" placeholder="Enter your name">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email">
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" class="form-control" placeholder="Enter your message"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+      
+    </div>
+    <div id="information">
+      <div class="information-section">
+        <div class="info-content">
+          <h1>Information</h1>
+          <p>Welcome to our website! We are dedicated to providing you with the latest and most valuable information.</p>
+          <a href="#" class="btn btn-primary">Explore More</a>
+        </div>
+      </div>
+    </div>
+    <div id="guide">
+      <div id="guide" class="guide-section">
+        <div class="guide-content">
+          <h1>Guide</h1>
+          <p>This is the guide content.</p>
+        </div>
+      </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    // Add an event listener to the window load event
+    window.addEventListener('load', function() {
+      var links = document.querySelectorAll('.container ol li a');
+      var homeLink = document.querySelector('.container ol li:first-child a'); // Select the home link
+  
+      // Set the home link as active by default
+      homeLink.classList.add('active');
+  
+      // Show the home content by default
+      var homeContent = document.getElementById('home');
+      homeContent.style.display = 'block';
+  
+      links.forEach(function(link) {
+        link.addEventListener('click', function(event) {
+          event.preventDefault();
+  
+          links.forEach(function(link) {
+            link.classList.remove('active');
+          });
+  
+          this.classList.add('active');
+  
+          var target = this.getAttribute('href').substr(1);
+  
+          var contents = document.querySelectorAll('.content > div');
+          contents.forEach(function(content) {
+            content.style.display = 'none';
+          });
+  
+          var targetContent = document.getElementById(target);
+          targetContent.style.display = 'block';
+        });
+      });
+    });
+  </script>
+</body>
+</html>
